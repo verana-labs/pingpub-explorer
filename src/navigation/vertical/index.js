@@ -23,22 +23,22 @@ function processMenu() {
     })
   }
   chainMenus.push({ header: 'LINKS' })
-  if (isTestnet()) {
-    chainMenus.push({
-      title: 'Mainnet Explorer',
-      href: 'https://ping.pub',
-      icon: 'ChromeIcon',
-    })
-  } else {
-    chainMenus.push({
-      title: 'Testnet Explorer',
-      href: 'http://testnet.ping.pub',
-      icon: 'LifeBuoyIcon',
-    })
-  }
+  // if (isTestnet()) {
+  //   chainMenus.push({
+  //     title: 'Mainnet Explorer',
+  //     href: 'https://ping.pub',
+  //     icon: 'ChromeIcon',
+  //   })
+  // } else {
+  //   chainMenus.push({
+  //     title: 'Testnet Explorer',
+  //     href: 'http://testnet.ping.pub',
+  //     icon: 'LifeBuoyIcon',
+  //   })
+  // }
   chainMenus.push({
     title: 'Twitter',
-    href: 'https://twitter.com/ping_pub',
+    href: 'https://twitter.com/NibiruChain',
     icon: 'TwitterIcon',
   })
   chainMenus.push({
@@ -48,7 +48,7 @@ function processMenu() {
   })
   chainMenus.push({
     title: 'Github',
-    href: 'https://github.com/ping-pub/explorer',
+    href: 'https://github.com/NibiruChain',
     icon: 'GithubIcon',
   })
 
