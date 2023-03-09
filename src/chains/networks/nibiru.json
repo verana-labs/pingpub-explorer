@@ -2,7 +2,7 @@
     "chain_name": "nibiru-itn-1",
     "coingecko": "nibiru",
     "api": [
-        "http://lcd.itn-1.nibiru.fi"
+        "https://lcd.itn-1.nibiru.fi"
     ],
     "rpc": [
         "https://rpc.itn-1.nibiru.fi"
