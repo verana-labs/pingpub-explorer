@@ -10,11 +10,33 @@ import { toHex } from '@cosmjs/encoding'
 
 let chains = {}
 const coingecko = {}
-const configs = require.context('../../chains/networks', false, /\.json$/)
+const configs = []
+
+const PLAYGROUND_NETWORKS = 'https://networks.play.nibiru.fi/ping-pub'
+const DEV_NETWORKS = 'https://networks.testnet.nibiru.fi/ping-pub'
+const ITN_NETWORKS = 'https://networks.itn.nibiru.fi/ping-pub'
+
+const testnets = await fetch(ITN_NETWORKS).then(response => response.json())
+testnets.forEach((_, i) => {
+  testnets[i].visible = true
+})
+configs.push(...testnets)
+
+const devnets = await fetch(DEV_NETWORKS).then(response => response.json())
+devnets.forEach((_, i) => {
+  devnets[i].visible = false
+})
+configs.push(...devnets)
+
+const playnets = await fetch(PLAYGROUND_NETWORKS).then(response => response.json())
+playnets.forEach((_, i) => {
+  playnets[i].visible = false
+})
+configs.push(...playnets)
 
 const update = {}
-configs.keys().forEach(k => {
-  const c = configs(k)
+configs.forEach(chain => {
+  const c = chain
   c.chain_name = String(c.chain_name).toLowerCase()
   update[c.chain_name] = c
   if (Array.isArray(c.assets)) {

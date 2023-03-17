@@ -4,53 +4,25 @@
     <b-link>
       <div class="d-flex justify-content-center align-items-center p-1">
         <vuexy-logo />
-        <h1
-          class="text-primary display-4 font-weight-bolder d-none d-md-block ml-1"
-        >
-          Ping Dashboard<small class="flow-left">Beta</small>
-        </h1>
       </div>
     </b-link>
-
-    <p class="mb-1">
-      Ping Dashboard is not just an explorer but also a wallet and more ... 🛠
-    </p>
     <h2 class="mb-3">
-      Cosmos Ecosystem Blockchains 🚀
+      Networks
     </h2>
 
     <div>
       <b-row class="match-height">
-        <b-col
-          v-for="(data,index) in chains"
-          :key="index"
-          v-observe-visibility="(visible) => visibilityChanged(visible, data)"
-          sm="6"
-          md="4"
-          lg="4"
-          xl="3"
-        >
+        <b-col v-for="(data, index) in chains" :key="index"
+          v-observe-visibility="(visible) => visibilityChanged(visible, data)" sm="6" md="4" lg="4" xl="3">
           <router-link :to="data.chain_name">
-            <b-card
-              v-if="data"
-              class="earnings-card text-left"
-            >
+            <b-card v-if="data" class="earnings-card text-left">
               <div>
                 <b-card-title class="mb-1 d-flex justify-content-between">
-                  <span class="text-uppercase">{{ data.chain_name }} <small class="font-small-2">{{ data.sdk_version }}</small></span>
-                  <b-dropdown
-                    class="ml-1"
-                    variant="link"
-                    no-caret
-                    toggle-class="p-0"
-                    right
-                  >
+                  <span class="text-uppercase">{{ data.chain_name }} <small class="font-small-2">{{ data.sdk_version
+                  }}</small></span>
+                  <b-dropdown class="ml-1" variant="link" no-caret toggle-class="p-0" right>
                     <template #button-content>
-                      <feather-icon
-                        icon="MoreVerticalIcon"
-                        size="18"
-                        class="cursor-pointer"
-                      />
+                      <feather-icon icon="MoreVerticalIcon" size="18" class="cursor-pointer" />
                     </template>
                     <b-dropdown-item :to="`/${data.chain_name}/`">
                       Summary
@@ -80,15 +52,8 @@
                     </h5>
                   </div>
                   <div>
-                    <b-avatar
-                      :src="data.logo"
-                      class="badge-minimal"
-                      variant="light-primary"
-                      rounded
-                      size="md"
-                      badge
-                      :badge-variant="data.variant"
-                    />
+                    <b-avatar :src="data.logo" class="badge-minimal" variant="light-primary" rounded size="md" badge
+                      :badge-variant="data.variant" />
                   </div>
                 </div>
                 <b-card-text class="text-muted font-small-2">
@@ -100,11 +65,7 @@
         </b-col>
 
         <!-- no result found -->
-        <b-col
-          v-show="!chains"
-          cols="12"
-          class="text-center"
-        >
+        <b-col v-show="!chains" cols="12" class="text-center">
           <h4 class="mt-4">
             No blockchain found!!
           </h4>
@@ -147,7 +108,9 @@ export default {
     Ripple,
   },
   data() {
-    const chains = this.$store.state.chains.config
+    const chains = Object.assign({}, ...Object.entries(this.$store.state.chains.config)
+      .filter(([k, v]) => v.visible)
+      .map(([k, v]) => ({ [k]: v })))
     return {
       chains,
       downImg: require('@/assets/images/pages/under-maintenance.svg'),

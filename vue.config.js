@@ -61,6 +61,9 @@ module.exports = {
       //   minRatio: 0.8,
       // }),
     ],
+    experiments: {
+      topLevelAwait: true
+    }
   },
   chainWebpack: config => {
     config.module
