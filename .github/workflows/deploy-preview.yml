@@ -1,0 +1,31 @@
+name: Deploy to Preview Channel
+
+on: pull_request
+
+jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/yarn.lock') }}
+
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
+
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: build
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NIBIRU_CHAIN }}"
+          projectId: nibiru-chain
+          expires: 14d
+          target: explorer
