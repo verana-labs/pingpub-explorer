@@ -3,7 +3,7 @@ import { ObserveVisibility } from 'vue-observe-visibility'
 import { ToastPlugin, ModalPlugin } from 'bootstrap-vue'
 import VueCompositionAPI from '@vue/composition-api'
 import messages from '@/lang'
-
+import VueGtag from 'vue-gtag'
 import VueI18n from 'vue-i18n'
 
 import ChainAPI from '@/libs/fetch'
@@ -21,7 +21,7 @@ import '@/libs/toastification'
 import '@/libs/clipboard'
 
 Vue.directive('observe-visibility', ObserveVisibility)
-// Vue.use(VueGtag, { config: { id: 'UA-238887-1' } }, router)
+Vue.use(VueGtag, { config: { id: 'G-90K2K7RHEC' } }, router)
 
 Vue.use(VueI18n)
 
