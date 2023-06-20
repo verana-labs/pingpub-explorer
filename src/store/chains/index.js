@@ -23,7 +23,7 @@ try {
   })
   configs.push(...testnets)
 } catch (error) {
-  console.error(error)
+  console.log(error)
 }
 
 try {
@@ -33,7 +33,7 @@ try {
   })
   configs.push(...devnets)
 } catch (error) {
-  console.error(error)
+  console.log(error)
 }
 
 try {
@@ -43,7 +43,7 @@ try {
   })
   configs.push(...playnets)
 } catch (error) {
-  console.error(error)
+  console.log(error)
 }
 
 const update = {}
