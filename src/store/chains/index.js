@@ -16,23 +16,35 @@ const PLAYGROUND_NETWORKS = 'https://networks.play.nibiru.fi/ping-pub'
 const DEV_NETWORKS = 'https://networks.testnet.nibiru.fi/ping-pub'
 const ITN_NETWORKS = 'https://networks.itn.nibiru.fi/ping-pub'
 
-const testnets = await fetch(ITN_NETWORKS).then(response => response.json())
-testnets.forEach((_, i) => {
-  testnets[i].visible = true
-})
-configs.push(...testnets)
+try {
+  const testnets = await fetch(ITN_NETWORKS).then(response => response.json())
+  testnets.forEach((_, i) => {
+    testnets[i].visible = true
+  })
+  configs.push(...testnets)
+} catch (error) {
+  console.error(error)
+}
 
-const devnets = await fetch(DEV_NETWORKS).then(response => response.json())
-devnets.forEach((_, i) => {
-  devnets[i].visible = false
-})
-configs.push(...devnets)
+try {
+  const devnets = await fetch(DEV_NETWORKS).then(response => response.json())
+  devnets.forEach((_, i) => {
+    devnets[i].visible = false
+  })
+  configs.push(...devnets)
+} catch (error) {
+  console.error(error)
+}
 
-const playnets = await fetch(PLAYGROUND_NETWORKS).then(response => response.json())
-playnets.forEach((_, i) => {
-  playnets[i].visible = false
-})
-configs.push(...playnets)
+try {
+  const playnets = await fetch(PLAYGROUND_NETWORKS).then(response => response.json())
+  playnets.forEach((_, i) => {
+    playnets[i].visible = false
+  })
+  configs.push(...playnets)
+} catch (error) {
+  console.error(error)
+}
 
 const update = {}
 configs.forEach(chain => {
