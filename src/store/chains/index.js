@@ -19,7 +19,7 @@ const ITN_NETWORKS = 'https://networks.itn.nibiru.fi/ping-pub'
 try {
   const testnets = await fetch(ITN_NETWORKS).then(response => response.json())
   testnets.forEach((_, i) => {
-    testnets[i].visible = false
+    testnets[i].visible = true
   })
   configs.push(...testnets)
 } catch (error) {
