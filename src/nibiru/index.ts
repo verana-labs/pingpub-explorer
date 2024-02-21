@@ -23,7 +23,8 @@ export const getNibiruChains = async (): Promise<{
 }> => {
   const [itn] = await Promise.all([
     getNetwork(ITN_NETWORKS),
-    // getNetwork(MAIN_NETWORK),
+    getNetwork(DEV_NETWORKS),
+    getNetwork(MAIN_NETWORK),
   ]);
   const chains = itn;
   const chainsObj: { [key: string]: LocalConfig } = {};
