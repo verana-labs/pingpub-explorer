@@ -21,13 +21,13 @@ export const getNetwork = async (url: string): Promise<LocalConfig[]> => {
 export const getNibiruChains = async (): Promise<{
   [key: string]: LocalConfig;
 }> => {
-  const [itn, dev] = await Promise.all([
+  const [itn, dev, main] = await Promise.all([
     getNetwork(ITN_NETWORKS),
     getNetwork(DEV_NETWORKS),
     getNetwork(MAIN_NETWORK),
   ]);
 
-  const chains = dev.concat(itn);
+  const chains = dev.concat(itn).concat(main);
   const chainsObj: { [key: string]: LocalConfig } = {};
   chains.forEach((chain) => {
     chainsObj[chain.chain_name] = chain;
