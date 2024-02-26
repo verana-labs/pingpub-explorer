@@ -24,7 +24,7 @@ export const getNibiruChains = async (): Promise<{
   const [itn, dev] = await Promise.all([
     getNetwork(ITN_NETWORKS),
     getNetwork(DEV_NETWORKS),
-    // getNetwork(MAIN_NETWORK),
+    getNetwork(MAIN_NETWORK),
   ]);
 
   const chains = dev.concat(itn);
