@@ -1,6 +1,6 @@
 {
-  "chain_name": "nibirutestnet1",
-  "registry_name": "nibiru-testnet1",
+  "chain_name": "nibiru-testnet-1",
+  "registry_name": "nibiru-testnet-1",
   "api": [
     {
       "address": "https://lcd.testnet-1.nibiru.fi",

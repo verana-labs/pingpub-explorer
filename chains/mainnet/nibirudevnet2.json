@@ -1,6 +1,6 @@
 {
-  "chain_name": "nibirudevnet2",
-  "registry_name": "nibiru-devnet2",
+  "chain_name": "nibiru-devnet-2",
+  "registry_name": "nibiru-devnet-2",
   "api": [
     {
       "address": "https://lcd.devnet-2.nibiru.fi",

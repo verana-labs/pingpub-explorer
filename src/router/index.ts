@@ -5,8 +5,6 @@ import { setupLayouts } from 'virtual:generated-layouts';
 // @ts-ignore
 import routes from '~pages';
 
-let once = false;
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [...setupLayouts(routes)],
