@@ -5,6 +5,8 @@ import { setupLayouts } from 'virtual:generated-layouts';
 // @ts-ignore
 import routes from '~pages';
 
+let once = false;
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [...setupLayouts(routes)],
@@ -13,8 +15,9 @@ const router = createRouter({
 //update current blockchain
 router.beforeEach((to) => {
   console.log(to);
-  if (to.path === '/') {
+  if (to.path === '/' && !once) {
     window.location.replace('/nibiru');
+    once = true;
   }
 
   const { chain } = to.params;
