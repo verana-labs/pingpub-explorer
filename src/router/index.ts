@@ -14,11 +14,6 @@ const router = createRouter({
 
 //update current blockchain
 router.beforeEach((to) => {
-  if (to.path === '/' && !once) {
-    window.location.replace('/nibiru');
-    once = true;
-  }
-
   const { chain } = to.params;
   if (chain) {
     const blockchain = useBlockchain();
