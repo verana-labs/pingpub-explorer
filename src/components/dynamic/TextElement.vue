@@ -159,7 +159,7 @@ const isConvertable = computed(() => {
     margin-bottom: 1rem;
   }
   a {
-    color: #113a48 !important;
+    color: #1E90FF !important;
   }
   .h1 > a,
   .h2 > a,
