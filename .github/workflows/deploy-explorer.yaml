@@ -50,6 +50,7 @@ jobs:
       - name: Update verana.json with Input Values
         run: |
           echo "Updating verana.json..."
+          pwd
           ./scripts/update-verana-json.sh "${{ github.event.inputs.RPC_ENDPOINTS }}" "${{ github.event.inputs.API_ENDPOINTS }}" "${{ github.event.inputs.CHAIN_NAME }}" "${{ github.event.inputs.CHAIN_ID }}"
 
       - name: Log in to DockerHub
