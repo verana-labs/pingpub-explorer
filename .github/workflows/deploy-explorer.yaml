@@ -103,4 +103,4 @@ jobs:
 
       - name: Deploy Explorer Ingress
         run: |
-          kubectl apply -f kubernetes/explorer-ingress.yaml --namespace=${{ env.BRANCH_NAME }}
+          kubectl apply -f kubernetes/explorer-ingress.yaml --namespace=${{ env.BRANCH_NAME }} || true
