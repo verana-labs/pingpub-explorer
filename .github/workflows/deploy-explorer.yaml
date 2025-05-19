@@ -14,11 +14,11 @@ on:
       RPC_ENDPOINTS:
         description: 'JSON array of RPC endpoints'
         required: true
-        default: '[{"provider":"primenode","address":"http://node1.devnet.verana.network:26657"}]'
+        default: '[{\"provider\":\"primenode\",\"address\":\"http://node1.devnet.verana.network:26657\"}]'
       API_ENDPOINTS:
         description: 'JSON array of API endpoints'
         required: true
-        default: '[{"provider":"primenode","address":"http://node1.devnet.verana.network:1317"}]'
+        default: '[{\"provider\":\"primenode\",\"address\":\"http://node1.devnet.verana.network:1317\"}]'
       CLUSTER_NODE:
         description: 'Cluster node name'
         required: true
