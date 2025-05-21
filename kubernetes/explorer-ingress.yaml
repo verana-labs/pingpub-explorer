@@ -4,9 +4,9 @@ metadata:
   name: explorer-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/rewrite-target: /index.html
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^/(.*) /index.html break;
+    # nginx.ingress.kubernetes.io/rewrite-target: /index.html
+    # nginx.ingress.kubernetes.io/configuration-snippet: |
+    #   rewrite ^/(.*) /index.html break;
 spec:
   ingressClassName: nginx
   tls:
