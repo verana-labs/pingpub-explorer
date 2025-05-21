@@ -14,11 +14,11 @@ on:
       RPC_ENDPOINTS:
         description: 'JSON array of RPC endpoints'
         required: true
-        default: '[{\"provider\":\"primenode\",\"address\":\"http://node1.devnet.verana.network:26657\"}]'
+        default: '[{"provider":"primenode","address":"http://node1.devnet.verana.network:26657"}]'
       API_ENDPOINTS:
         description: 'JSON array of API endpoints'
         required: true
-        default: '[{\"provider\":\"primenode\",\"address\":\"http://node1.devnet.verana.network:1317\"}]'
+        default: '[{"provider":"primenode","address":"http://node1.devnet.verana.network:1317"}]'
       CLUSTER_NODE:
         description: 'Cluster node name'
         required: true
@@ -50,9 +50,19 @@ jobs:
       - name: Update verana.json with Input Values
         run: |
           echo "Updating verana.json..."
-          pwd
-          ./scripts/update-verana-json.sh "${{ github.event.inputs.RPC_ENDPOINTS }}" "${{ github.event.inputs.API_ENDPOINTS }}" "${{ github.event.inputs.CHAIN_NAME }}" "${{ github.event.inputs.CHAIN_ID }}"
-
+          mkdir -p ./chains/mainnet
+          jq --arg rpc_raw '${{ github.event.inputs.RPC_ENDPOINTS }}' \
+             --arg api_raw '${{ github.event.inputs.API_ENDPOINTS }}' \
+             --arg chain_name "${{ github.event.inputs.CHAIN_NAME }}" \
+             --arg chain_id "${{ github.event.inputs.CHAIN_ID }}" \
+             '
+             .rpc = ($rpc_raw | fromjson) |
+             .api = ($api_raw | fromjson) |
+             .chain_name = $chain_name |
+             .chain_id = $chain_id
+             ' ./chains/mainnet/verana.json > ./chains/mainnet/verana-updated.json
+          cat ./chains/mainnet/verana-updated.json
+          mv ./chains/mainnet/verana-updated.json ./chains/mainnet/verana.json
       - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
