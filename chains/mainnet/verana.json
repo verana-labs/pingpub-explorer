@@ -3,12 +3,10 @@
     "chain_id": "vna-testnet-1",
     "status": "live",
     "api": [
-        {"provider": "primenode", "address": "http://node1.testnet.verana.network:1317"},
-        {"provider": "node2", "address": "http://node2.testnet.verana.network:1317"}
+        {"provider": "primenode", "address": "https://node1.testnet.verana.network"}
     ],
     "rpc": [
-        {"provider": "primenode", "address": "http://node1.testnet.verana.network:26657"},
-        {"provider": "node2", "address": "http://node2.testnet.verana.network:26657"}
+        {"provider": "primenode", "address": "http://node1.testnet.verana.network:26657"}
     ],
     "sdk_version": "0.50.13",
     "coin_type": "118",
@@ -17,9 +15,9 @@
         "base": "uvna",
         "symbol": "VNA",
         "exponent": "6",
-        "logo": "/logos/verana.svg"
+        "logo": "/logos/verana.png"
     }],
     "addr_prefix": "verana",
     "theme_color": "#161723",
-    "logo": "/logos/verana.svg"
+    "logo": "/logos/verana.png"
 }
