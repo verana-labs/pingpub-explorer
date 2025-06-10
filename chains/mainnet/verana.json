@@ -1,0 +1,23 @@
+{
+    "chain_name": "verana",
+    "chain_id": "vna-testnet-1",
+    "status": "live",
+    "api": [
+        {"provider": "primenode", "address": "https://api1.testnet.verana.network"}
+    ],
+    "rpc": [
+        {"provider": "primenode", "address": "http://node1.testnet.verana.network:26657"}
+    ],
+    "sdk_version": "0.50.13",
+    "coin_type": "118",
+    "min_tx_fee": "8000",
+    "assets": [{
+        "base": "uvna",
+        "symbol": "VNA",
+        "exponent": "6",
+        "logo": "/logos/verana.png"
+    }],
+    "addr_prefix": "verana",
+    "theme_color": "#161723",
+    "logo": "/logos/verana.png"
+}
