@@ -3,7 +3,7 @@
     "chain_id": "vna-testnet-1",
     "status": "live",
     "api": [
-        {"provider": "primenode", "address": "https://node1.testnet.verana.network"}
+        {"provider": "primenode", "address": "https://api1.testnet.verana.network"}
     ],
     "rpc": [
         {"provider": "primenode", "address": "http://node1.testnet.verana.network:26657"}
