@@ -15,9 +15,9 @@
         "base": "uvna",
         "symbol": "VNA",
         "exponent": "6",
-        "logo": "/logos/verana.png"
+        "logo": "https://explorer.testnet.verana.network/logos/verana.png"
     }],
     "addr_prefix": "verana",
     "theme_color": "#161723",
-    "logo": "/logos/verana.png"
+    "logo": "https://explorer.testnet.verana.network/logos/verana.png"
 }
