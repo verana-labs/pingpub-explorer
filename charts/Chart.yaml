@@ -1,0 +1,19 @@
+apiVersion: v2
+name: pingpub-explorer-chart
+description: A Helm chart for the PingPub based Verana block explorer
+type: application
+version: 0.1.0
+# Overridden by CD with the released version. The "dev" fallback only applies
+# when installing this directory directly, and that tag is always published.
+appVersion: "dev"
+home: https://verana.io
+sources:
+  - https://github.com/verana-labs/pingpub-explorer
+maintainers:
+  - name: Verana Team
+    email: team@verana.io
+keywords:
+  - verana
+  - blockchain
+  - explorer
+  - pingpub

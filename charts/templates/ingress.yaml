@@ -1,0 +1,29 @@
+{{- if .Values.ingress.enabled }}
+{{- $host := tpl .Values.ingress.host . }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "pingpub-explorer.name" . }}
+  labels:
+    {{- include "pingpub-explorer.labels" . | nindent 4 }}
+  annotations:
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.clusterIssuer }}
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  tls:
+    - hosts:
+        - {{ $host }}
+      secretName: {{ tpl .Values.ingress.tlsSecret . }}
+  rules:
+    - host: {{ $host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "pingpub-explorer.name" . }}
+                port:
+                  number: {{ .Values.service.port }}
+{{- end }}
