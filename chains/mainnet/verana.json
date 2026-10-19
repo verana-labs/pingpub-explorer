@@ -1,12 +1,12 @@
 {
-    "chain_name": "verana",
-    "chain_id": "vna-testnet-1",
+    "chain_name": "Verana Devnet",
+    "chain_id": "vna-devnet-1",
     "status": "live",
     "api": [
-        {"provider": "primenode", "address": "https://api1.testnet.verana.network"}
+        {"provider": "devnet-api-proxy", "address": "https://api.devnet.verana.network"}
     ],
     "rpc": [
-        {"provider": "primenode", "address": "http://node1.testnet.verana.network:26657"}
+        {"provider": "devnet-rpc-proxy", "address": "https://rpc.devnet.verana.network"}
     ],
     "sdk_version": "0.50.13",
     "coin_type": "118",
@@ -15,9 +15,9 @@
         "base": "uvna",
         "symbol": "VNA",
         "exponent": "6",
-        "logo": "https://explorer.testnet.verana.network/logos/verana.png"
+        "logo": "/logos/verana.png"
     }],
     "addr_prefix": "verana",
     "theme_color": "#161723",
-    "logo": "https://explorer.testnet.verana.network/logos/verana.png"
+    "logo": "/logos/verana.png"
 }
