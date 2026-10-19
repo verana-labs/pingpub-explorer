@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "pingpub-explorer.name" . }}
+  labels:
+    {{- include "pingpub-explorer.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      {{- include "pingpub-explorer.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "pingpub-explorer.selectorLabels" . | nindent 8 }}
+      {{- if .Values.chainConfig.enabled }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      {{- end }}
+    spec:
+      containers:
+        - name: explorer
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.chainConfig.enabled }}
+          volumeMounts:
+            - name: chain-config
+              mountPath: /usr/share/nginx/html/chains/{{ .Values.chainConfig.network }}
+              readOnly: true
+          {{- end }}
+      {{- if .Values.chainConfig.enabled }}
+      volumes:
+        - name: chain-config
+          configMap:
+            name: {{ include "pingpub-explorer.name" . }}-config
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

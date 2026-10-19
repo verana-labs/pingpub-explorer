@@ -1,0 +1,42 @@
+nameOverride: "pingpub-explorer"
+replicas: 1
+
+image:
+  repository: veranalabs/pingpub-explorer
+  # Empty on purpose: the tag falls back to the chart appVersion, which CD pins
+  # to the exact image built in the same run. Set it only to override that pin.
+  tag: ""
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  clusterIssuer: letsencrypt-prod
+  host: ""
+  tlsSecret: ""
+
+# The SPA bundles its chain config at build time, so this ConfigMap is only
+# useful once the explorer reads chains at runtime. Off by default.
+chainConfig:
+  enabled: false
+  network: testnet
+  veranaJson: {}
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+nodeSelector: {}
+
+host: ""
+global:
+  domain: ""

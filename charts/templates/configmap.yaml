@@ -1,0 +1,11 @@
+{{- if .Values.chainConfig.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "pingpub-explorer.name" . }}-config
+  labels:
+    {{- include "pingpub-explorer.labels" . | nindent 4 }}
+data:
+  verana.json: |
+{{ toPrettyJson .Values.chainConfig.veranaJson | indent 4 }}
+{{- end }}
