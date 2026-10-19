@@ -19,7 +19,7 @@ env:
 
 jobs:
   resolve-version:
-    uses: 2060-io/organization/.github/workflows/resolve-version-call.yml@main
+    uses: 2060-io/organization/.github/workflows/resolve-version-call.yml@562f890be78c7fd3f07695446f4506d383c52219 # main
     with:
       prerelease-branch: master
 
